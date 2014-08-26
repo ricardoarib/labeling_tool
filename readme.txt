@@ -2,6 +2,7 @@ To build the software:
    mkdir build
    cd build
    cmake ..
+   make
 
 To use the software:
    build/labeling_tool <video_file>
