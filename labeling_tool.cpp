@@ -8,6 +8,7 @@
 #include <fstream>
 #include <ctime>
 #include <cstdio> // for remove("filename")
+#include <getopt.h>
 
 using namespace std;
 
