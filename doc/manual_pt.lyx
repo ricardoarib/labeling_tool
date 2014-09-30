@@ -73,6 +73,10 @@
 Ferramenta de Labeling - Manual do Utilizador
 \end_layout
 
+\begin_layout Author
+Ricardo Ribeiro (ribeiro@isr.ist.utl.pt)
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -194,6 +198,10 @@ Dependências e sistemas suportados
 \begin_layout Standard
 Esta ferramenta depende das bibliotecas do OpenCV, portanto é necessário
  instalá-las antes de compilar.
+\end_layout
+
+\begin_layout Standard
+Para compilar a ferramenta, é ainda necessário ter o cmake instalado.
 \end_layout
 
 \begin_layout Standard
@@ -407,7 +415,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/help/Screenshot from 2014-09-29 18:24:22.png
+	filename images/help/Screenshot from 2014-09-30 19:57:30.png
 	width 90text%
 
 \end_inset
@@ -2396,8 +2404,8 @@ Para efeitos de optimização do trabalho, tentou-se minimizar o numero de
 \end_layout
 
 \begin_layout Standard
-Para os casos em que não é necessário nenhum ajuste, pode-se carregar na
- tecla 
+Para os casos em que não é necessário nenhum ajuste, pode-se carregar nas
+ teclas SIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2409,7 +2417,7 @@ t
 \end_layout
 
 \begin_layout Standard
-Pode-se ainda carregar em SHIFT+
+Carregando apenas em 
 \begin_inset Quotes erd
 \end_inset
 
@@ -2417,7 +2425,17 @@ t
 \begin_inset Quotes erd
 \end_inset
 
- para tornar a label temporária novamente.
+ torna a label como temporária novamente.
+\end_layout
+
+\begin_layout Standard
+Existe ainda a tecla ENTER que torna a label final e avança para o frame
+ seguinte.
+ Esta combinação é útil quando se está a rever as labels depois de usar
+ os métodos automáticos.
+ Provavelmente, nesse caso, muitas das labels não precisam de ajuste, bastando
+ aceitá-las e passar à label seguinte.
+ Para tal só é necessário carregar em ENTER.
 \end_layout
 
 \begin_layout Subsection

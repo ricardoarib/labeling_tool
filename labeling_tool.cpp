@@ -1,3 +1,32 @@
+//
+// Copyright (c) 2014, ISR/IST (Instituto de Sistemas e Robótica / Instituto Superior Técnico)
+// All rights reserved.
+// 
+// Author:
+//    Ricardo Ribeiro <ribeiro@isr.ist.utl.pt>
+//
+//
+// Distribution allowed only inside the context of the Seagull project:
+//     Contract reference QREN/ADI-20131034063
+//
+// Contact:
+//    Alexandre Bernardino <alex@isr.ist.utl.pt>
+//
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+// FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+// COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+// INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+// ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
 #include "opencv/cv.h"
 #include "opencv/highgui.h"
 #include "iostream"
@@ -8,7 +37,6 @@
 #include <fstream>
 #include <ctime>
 #include <cstdio> // for remove("filename")
-#include <getopt.h>
 
 using namespace std;
 
@@ -287,12 +315,12 @@ void print_online_help ( cv::Mat img2 ) {
   putText( img2, string("  f/g - right border left/right") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("  d/c - bottom border up/down") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   y+=nlskip ; 
-  putText( img2, string(",/. - previous/next frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("m/- - previous/next 10th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string(";/: - previous/next 100th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string(",/. - next/previous frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("m/- - next/previous 10th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string(";/: - next previous 100th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("M/_ - first/last frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("k/l - previous/next final box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("K/L - previous/next estimated box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("k/l - next/previous final box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("K/L - next/previous estimated box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("Space - start/stop play") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   y+=nlskip ; 
   putText( img2, string("5/6 - decrement/increment current id") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
