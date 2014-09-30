@@ -37,6 +37,7 @@
 #include <fstream>
 #include <ctime>
 #include <cstdio> // for remove("filename")
+#include <getopt.h>
 
 using namespace std;
 
@@ -315,12 +316,12 @@ void print_online_help ( cv::Mat img2 ) {
   putText( img2, string("  f/g - right border left/right") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("  d/c - bottom border up/down") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   y+=nlskip ; 
-  putText( img2, string(",/. - next/previous frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("m/- - next/previous 10th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string(";/: - next previous 100th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string(",/. - previous/next frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("m/- - previous/next 10th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string(";/: - previous/next 100th frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("M/_ - first/last frame") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("k/l - next/previous final box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("K/L - next/previous estimated box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("k/l - previous/next final box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("K/L - previous/next estimated box") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("Space - start/stop play") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   y+=nlskip ; 
   putText( img2, string("5/6 - decrement/increment current id") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
