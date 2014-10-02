@@ -112,16 +112,16 @@ Introdução
 
 \begin_layout Standard
 Tanto para treino dos algoritmos de visão como para o teste dos mesmos,
- é necessário utilizar sequências de imagens que tenham sido previamente
- anotadas.
+ é necessário utilizar sequências de imagens que tenham sido anotadas manualment
+e.
  
 \end_layout
 
 \begin_layout Standard
-A tarefa de anotação (labeling) consiste em marcar um rectângulo em volta
- de todas os objectos que aparecem nas imagens.
+A tarefa de anotação (labeling) consiste em marcar um rectângulo (label)
+ à volta de todas os objectos que aparecem nas imagens.
  Tal operação tem de ser feita manualmente, pois serve como base de verdade
- (Ground Truth) sobre a qual os algoritmos vão ser treinados e testados.
+ (ground truth) sobre a qual os algoritmos vão ser treinados e testados.
  Qualquer erro no processo de etiquetagem afectará negativamente a performance
  dos algoritmos e comprometerá a fiabilidade das avaliações efectuadas.
  
@@ -133,21 +133,28 @@ Este processo manual é bastante moroso, especialmente se o número de imagens
  Por esse motivo, esta ferramenta foi desenvolvida tendo em vista tentar
  aliviar o peso desta tarefa.
  Isto foi conseguido de várias formas.
- Em primeiro lugar, criando uma interface que seja leve e rápida e tentando
- minimizar o número de operações necessárias por cada anotação.
- 
 \end_layout
 
 \begin_layout Standard
-Isto foi conseguido desenvolvendo a ferramenta na linguagem C++ (foram usadas
- as bibliotecas do OpenCV).
+Um forma foi criando uma interface que seja leve e rápida e tentando minimizar
+ o número de operações necessárias por cada label.
+ Isto foi conseguido desenvolvendo a ferramenta na linguagem C++ (foram
+ usadas as bibliotecas do OpenCV).
  Houve o cuidado de tornar a execução de todas as operações o mais rápido
  possível, de forma a que o operador veja imediatamente o resultado dos
  comandos que executa e de forma a que possa executar comandos em sequência
  de forma rápida.
  As ferramentas manuais existentes anteriormente, programadas em Matlab,
  eram demasiado morosas.
- 
+\end_layout
+
+\begin_layout Standard
+A segunda forma de aliviar a tarefa de labeling foi providenciando mecanismos
+ automáticos para a colocação de labels, sem prejuízo do ajuste manual ou
+ pelo menos da verificação manual dessas labels pelo utilizador.
+ Estes automatismos tentam colocar as labels o mais próximo possível da
+ posição final desejada, restando ao utilizador fazer pequenos ajustes às
+ labels ou, se for caso disso, apenas confirmar que estão correctas.
 \end_layout
 
 \begin_layout Standard
@@ -175,10 +182,6 @@ devel/tools/labeling_tool
 \begin_layout Standard
 no SVN do projecto SEAGULL nos servidores do ISR.
  Para descarregar a ferramenta, usar o comando:
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \begin_layout LyX-Code
@@ -216,8 +219,8 @@ Foi também compilada e testada em Mac OS
 
 X.
  Esta versão é utilizável mas apresenta alguns problemas, especialmente
- no que diz respeito ao tamanho da janela.
- Portanto a funcionalidade descrita na subsecção
+ no que diz respeito ao tamanho da janela, afectando portanto a funcionalidade
+ descrita na subsecção
 \begin_inset space ~
 \end_inset
 
@@ -228,7 +231,7 @@ reference "sub:tamanho-da-janela"
 
 \end_inset
 
- fica afectada em sistemas Mac OS X.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -308,7 +311,7 @@ Ficheiro de video
 O ficheiro de vídeo pode ser qualquer ficheiro num formato legível pelo
  OpenCV (exemplos: .mpg, .avi, .mkv, etc.).
  Indicar o ficheiro no comando.
- Exemplo:
+ Por exemplo:
 \end_layout
 
 \begin_layout LyX-Code
@@ -316,7 +319,7 @@ O ficheiro de vídeo pode ser qualquer ficheiro num formato legível pelo
 \end_layout
 
 \begin_layout Standard
-Se o ficheiro não estivar na pasta actual, indicar também o caminho:
+Se o ficheiro não estivar na pasta actual, então indicar também o caminho:
 \end_layout
 
 \begin_layout LyX-Code
@@ -403,7 +406,15 @@ Utilização geral
 \end_layout
 
 \begin_layout Subsubsection
-Ajuda (tecla h)
+Ajuda (tecla 
+\begin_inset Quotes eld
+\end_inset
+
+h
+\begin_inset Quotes erd
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -478,15 +489,22 @@ reference "fig:Ajuda"
 
 ) onde estão identificadas todas as teclas (ou combinações de teclas) para
  todos os comandos possíveis assim como uma breve descrição dos mesmos.
- Carregue na tecla 'h' para chamar esse ecrã de ajuda, carregue novamente
- para sair do ecrã.
+ Carregue na tecla 
+\begin_inset Quotes eld
+\end_inset
+
+h
+\begin_inset Quotes erd
+\end_inset
+
+ para chamar esse ecrã de ajuda, carregue novamente para sair do ecrã.
 \end_layout
 
 \begin_layout Standard
 A ferramenta continua a trabalhar normalmente mesmo com a ajuda visível.
- Além disso, o ecrã de ajuda é translúcido.
- Isto permite que se continue a poder executar outros comandos e a fazer
- ajustes com o rato.
+ O ecrã de ajuda é translúcido e tanto o teclado como o rato continuam operacion
+ais.
+ Isto permite ao utilizador continuar trabalhar enquanto vê o ecrã de ajuda.
 \end_layout
 
 \begin_layout Subsubsection
@@ -530,7 +548,7 @@ name "fig:mapa-do-teclado"
 \end_inset
 
 Mapa do teclado mostrando os comandos disponíveis na ferramenta de labeling
- (mapa disponível em labeling_tool/images/help.svg).
+ (este mapa está disponível em labeling_tool/doc/keyboard_map.pdf).
 \end_layout
 
 \end_inset
@@ -557,10 +575,10 @@ reference "fig:mapa-do-teclado"
 \end_inset
 
 ), existindo teclas únicas ou combinações simples de teclas para realizar
- todas as operações necessárias.
- Foram ainda levadas em contas questões ergonómicas, tentando-se reduzir
- o número de movimentos necessários não só por cada comando mas também nas
- sequências de comandos mais utilizadas.
+ todas as operações.
+ Foram levadas em contas questões ergonómicas, tentando-se reduzir o número
+ de movimentos necessários não só por cada comando mas também nas sequências
+ de comandos mais utilizadas.
 \end_layout
 
 \begin_layout Standard
@@ -575,15 +593,25 @@ reference "fig:mapa-do-teclado"
 
 \end_inset
 
- está disponível junto com o código fonte na pasta images
+ está disponível junto com o código fonte na pasta doc.
 \end_layout
 
 \begin_layout LyX-Code
-labeling_tool/images/help.svg
+labeling_tool/doc/keyboard_map.pdf
 \end_layout
 
 \begin_layout Standard
 e pode ser impresso para referência.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Nota: 
+\series default
+Esta ferramenta foi desenvolvida com base no teclado português de Portugal.
+ Para outros teclados os comandos podem estar em posições diferentes das
+ descritas.
 \end_layout
 
 \begin_layout Subsubsection
@@ -591,8 +619,8 @@ Rato
 \end_layout
 
 \begin_layout Standard
-É ainda possível usar o rato do computador, mas essa possibilidade é mais
- apta para movimentações grandes das labels no ecrã.
+É possível usar o rato do computador, mas essa opção é mais apta para movimentaç
+ões grandes das labels no ecrã.
  Esse tipo de movimentação é rara, sendo preferível manter ambas as mãos
  no teclado ao invés de desperdiçar tempo a mudar a mão entre o teclado
  e o rato.
@@ -600,8 +628,8 @@ Rato
 
 \begin_layout Standard
 O rato pode ser usado para mover ou para modificar a label.
- Para tal, carrega-se no botão direito, arrasta-se o rato e larga-se o botão
- na nova posição desejada.
+ Para tal, carrega-se no botão esquerdo, arrasta-se o rato e larga-se o
+ botão na nova posição desejada.
  O ponto na imagem sobre o qual o cursor do rato está quando se carrega
  no botão define a operação realizada pelo rato.
  Para mais informação ver a subsecção
@@ -623,8 +651,8 @@ Gravar
 \end_layout
 
 \begin_layout Standard
-Contrariamente ao que é habitual, não existe nenhum comando para gravar
- o ficheiro de labels.
+Contrariamente ao que é habitual, não existe nenhum comando específico para
+ gravar o ficheiro de labels.
  O ficheiro é gravado automaticamente quando se sai do programa (carregar
  na tecla Escape).
 \begin_inset Foot
@@ -733,7 +761,7 @@ v
 
 \begin_layout Standard
 Existem várias teclas que permitem avançar e retroceder no tempo do vídeo.
- Isto pode ser feito:
+ O seguintes comandos estão disponíveis:
 \end_layout
 
 \begin_layout Itemize
@@ -797,7 +825,7 @@ avançar/retroceder de 100 em 100 frames -- teclas
 \begin_inset Quotes erd
 \end_inset
 
- ( ou seja, shift + 
+ ( ou seja, SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -805,7 +833,7 @@ avançar/retroceder de 100 em 100 frames -- teclas
 \begin_inset Quotes erd
 \end_inset
 
- e shift + 
+ e SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -817,7 +845,7 @@ avançar/retroceder de 100 em 100 frames -- teclas
 \end_layout
 
 \begin_layout Itemize
-ir para a primeiro frame do vídeo -- tecla 
+ir para a primeira frame do vídeo -- tecla 
 \begin_inset Quotes eld
 \end_inset
 
@@ -825,7 +853,7 @@ M
 \begin_inset Quotes erd
 \end_inset
 
- ( ou seja, shift + 
+ ( ou seja, SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -845,7 +873,7 @@ _
 \begin_inset Quotes erd
 \end_inset
 
- ( ou seja, shift + 
+ ( ou seja, SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -862,7 +890,7 @@ _
 \end_layout
 
 \begin_layout Itemize
-contenha uma label temporária - teclas shift + 
+contenha uma label temporária - teclas SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -870,7 +898,7 @@ k
 \begin_inset Quotes erd
 \end_inset
 
- e shift + 
+ e SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1373,7 +1401,7 @@ reference "sub:zoom"
 
 \end_inset
 
-), sendo sempre relativo ao tamanho do vídeo com o zoom igual a 1x.
+).
 \end_layout
 
 \begin_layout Standard
@@ -1395,7 +1423,7 @@ reference "sub:zoom"
 \series bold
 Nota:
 \series default
- para obter uma representação do vídeo no ecrã pixel a pixel, escolher o
+ Para obter uma representação do vídeo no ecrã pixel a pixel, escolher o
  tamanho igual ao original (tecla 
 \begin_inset Quotes eld
 \end_inset
@@ -1424,31 +1452,20 @@ reference "sub:zoom"
 \series bold
 Nota:
 \series default
- por defeito, a ferramenta é inicializada com uma janela de tamanho igual
+ Por defeito, a ferramenta é inicializada com uma janela de tamanho igual
  a metade do tamanho do vídeo.
  Isto ajuda quando os vídeos são maiores que o ecrã.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Nota:
-\series default
- no sistema operativo OS
-\begin_inset space ~
-\end_inset
-
-X esta funcionalidade ainda tem problemas (ou seja, não funciona).
-\end_layout
-
 \begin_layout Subsubsection
-ID dos objectos
+ID's dos objectos
 \end_layout
 
 \begin_layout Standard
-É possível fazer o labeling de vários objectos na mesma imagem.
- A cada objecto atribui-se um número de identificação (id).
- O id actual é escolhido usando as teclas 
+A ferramenta está preparada para fazer o labeling de vários objectos na
+ mesma imagem.
+ A cada objecto atribui-se um número de identificação (ID).
+ O ID actual é escolhido usando as teclas 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1468,7 +1485,7 @@ ID dos objectos
 \end_layout
 
 \begin_layout Standard
-A label correspondente ao id actual tem cor verde ou laranja, conforme o
+A label correspondente ao ID actual tem cor verde ou amarela, conforme o
  tipo (ver subsecção
 \begin_inset space ~
 \end_inset
@@ -1481,7 +1498,7 @@ reference "sub:tipos-de-labels"
 \end_inset
 
 ).
- As labels dos outros id's são mostradas a cor cinzenta.
+ As labels com outros ID's são mostradas a cor cinzenta.
 \end_layout
 
 \begin_layout Standard
@@ -1493,7 +1510,7 @@ x
 \begin_inset Quotes erd
 \end_inset
 
-, é mostrado junto das labels qual o id a que cada label corresponde (Figura
+, é mostrado junto das labels qual o ID a que cada label corresponde (Figura
 \begin_inset space ~
 \end_inset
 
@@ -1524,12 +1541,12 @@ v
 \begin_inset Quotes erd
 \end_inset
 
- é também mostrado no canto superior direito o ID seleccionado.
+ é mostrado no canto superior direito o ID actualmente seleccionado.
 \end_layout
 
 \begin_layout Standard
-Todos os comandos afectam apenas e somente a label do id actual.
- Para criar, modificar ou apagar uma label com outro id que não seja o actual,
+Todos os comandos afectam apenas e somente a label do ID actual.
+ Para criar, modificar ou apagar uma label com outro ID que não seja o actual,
  então é obrigatoriamente necessário usar as teclas 
 \begin_inset Quotes eld
 \end_inset
@@ -1546,7 +1563,7 @@ Todos os comandos afectam apenas e somente a label do id actual.
 \begin_inset Quotes erd
 \end_inset
 
- para seleccionar o id correcto.
+ para seleccionar o ID correcto.
 \end_layout
 
 \begin_layout Standard
@@ -1846,7 +1863,7 @@ reference "fig:Tipos-de-labels"
 \end_layout
 
 \begin_layout Itemize
-labels temporárias - cor laranja
+labels temporárias - cor amarela
 \end_layout
 
 \begin_layout Itemize
@@ -1854,7 +1871,7 @@ labels definitivas - cor verde
 \end_layout
 
 \begin_layout Standard
-Sempre que uma label é criada, o seu tipo é temporário.
+Sempre que uma label é criada, o seu tipo é por defeito temporário.
  Isto inclui labels criadas manualmente (subsecção
 \begin_inset space ~
 \end_inset
@@ -1919,7 +1936,7 @@ reference "sub:finalizar-as-labels"
 \series bold
 Nota:
 \series default
- existiu a preocupação de minimizar o número de operações necessárias por
+ Existiu a preocupação de minimizar o número de operações necessárias por
  label.
  Para tal, vários dos comandos da ferramenta de labeling transformam automaticam
 ente as labels temporárias em definitivas sem ser necessário ao operador
@@ -1955,7 +1972,7 @@ manualmente - tecla
 \end_layout
 
 \begin_layout Itemize
-automaticamente - (ver subsecção
+automaticamente - ver subsecção
 \begin_inset space ~
 \end_inset
 
@@ -1966,7 +1983,7 @@ reference "sub:automatismos"
 
 \end_inset
 
-)
+
 \end_layout
 
 \begin_layout Standard
@@ -1991,7 +2008,7 @@ Apagar labels
 \end_layout
 
 \begin_layout Standard
-Carregue nas teclas shift e 
+Carregue nas teclas SHIFT e 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2026,11 +2043,10 @@ Usar o rato
 
 \begin_layout Standard
 O rato pode ser usado para mover ou para modificar a label.
- Para tal, carrega-se no botão direito, arrasta-se o rato e larga-se o botão
- na nova posição desejada.
+ Para tal, carrega-se no botão esuqerdo, arrasta-se o rato e larga-se o
+ botão na nova posição desejada.
  O ponto na imagem sobre o qual o cursor do rato está quando se carrega
  no botão define a operação realizada pelo rato.
- 
 \end_layout
 
 \begin_layout Paragraph
@@ -2207,7 +2223,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-selecciona duas fronteiras (sobre o canto).
+Selecciona duas fronteiras (sobre o canto).
 \end_layout
 
 \end_inset
@@ -2238,11 +2254,10 @@ Formas de usar o rato.
 \end_layout
 
 \begin_layout Standard
-Se se carregar sobre uma das fronteiras ou sobre uma das rectas imaginárias
- que passam sobre as fronteiras, então o rato vai mover a fronteira em questão.
- Ao colocar o rato sobre uma fronteira ou sobre a respectiva recta imaginária,
- a cor da fronteira muda para vermelho assinalando que essa será a fronteira
- seleccionada ao premir o botão do rato.
+Carregando sobre uma das fronteiras ou sobre uma das rectas imaginárias
+ que passam sobre as fronteiras faz rato mover a fronteira em questão.
+ A fronteira seleccionada é assinalada com cor vermelha.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2252,7 +2267,7 @@ Apontar o rato para a recta imaginária (fora da fronteira) é útil quando
 \end_layout
 
 \begin_layout Standard
-É ainda possível mover duas fronteiras em simultâneo apontando o rato para
+É também possível mover duas fronteiras em simultâneo apontando o rato para
  o canto da label onde as duas fronteiras se cruzam.
 \end_layout
 
@@ -2261,8 +2276,8 @@ Mover a label usando o rato
 \end_layout
 
 \begin_layout Standard
-Carregando em qualquer outro ponto que não seleccione nenhuma fronteira,
- o rato move a label por inteiro sem alterar as suas dimensões.
+Carregando em qualquer outro ponto que não seleccione nenhuma fronteira
+ faz o rato mover a label por inteiro sem alterar as suas dimensões.
 \end_layout
 
 \begin_layout Paragraph*
@@ -2284,11 +2299,11 @@ reference "fig:mapa-do-teclado"
 
 ).
  A disposição dessas teclas está organizada de uma forma lógica tanto no
- que diz respeito à fronteira a mover como na direcção do movimento.
+ que diz respeito à posição da fronteira a mover como na direcção do movimento.
 \end_layout
 
 \begin_layout Standard
-Por exemplo, ambas as teclas para mover a fronteira do lado esquerdo (
+Por exemplo, ambas as teclas que movem a fronteira do lado esquerdo (
 \begin_inset Quotes eld
 \end_inset
 
@@ -2304,8 +2319,8 @@ s
 \begin_inset Quotes erd
 \end_inset
 
-) estão do lado esquerdo relativamente às outras teclas, e a tecla que move
- essa fronteira para a esquerda é o 
+) estão do lado esquerdo relativamente às outras teclas.
+ Adicionalmente, a tecla que move essa fronteira para a esquerda é o 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2322,15 +2337,13 @@ s
 \end_inset
 
  que move a fronteira para a direita.
- Espera-se que desta forma o operador não precise de sequer olhar para o
- teclado para ajustar a label.
+ Espera-se que desta forma o operador não precise de olhar para o teclado
+ para ajustar a label.
 \end_layout
 
 \begin_layout Standard
-Existe ainda a possibilidade de mover a fronteira de 10 em 10 pixeis, carregando
- em simultâneo na tecla SHIFT.
- Desta forma conseguem-se fazer movimentos mais rápidos carregando menos
- vezes nas teclas.
+Existe ainda a possibilidade de mover a fronteira rapidamente de 10 em 10
+ pixeis, carregando em simultâneo na tecla SHIFT.
 \end_layout
 
 \begin_layout Paragraph
@@ -2345,8 +2358,8 @@ Não existem teclas específicas para mover a label como um todo.
 
 \begin_layout Standard
 Por exemplo, vamos supor que se pretende deslocar a label para o lado esquerdo.
- Esta operação é equivalente a deslocar tanto a fronteira esquerda como
- a direita, ambas para o lado esquerdo.
+ Esta operação é equivalente a deslocar ambas as fronteiras esquerda e direita
+ para o lado esquerdo na mesma quantidade.
  Podemos então usar as teclas 
 \begin_inset Quotes eld
 \end_inset
@@ -2363,11 +2376,10 @@ f
 \begin_inset Quotes erd
 \end_inset
 
-, e se as carregarmos em rápida sucessão, o movimento que resulta é o pretendido.
+, pressionando-as em rápida sucessão, do que resulta o movimento pretendido.
  Melhor ainda, na maioria dos casos (dependendo do hardware) podemos carregar
  nas duas teclas em simultâneo porque o teclado vai automaticamente enviar
- os dois keypresses um a seguir ao outro (não interessa qual vai primeiro
- desde que sigam o mesmo numero de keypresses para cada uma das fronteiras).
+ os dois keystrokes um a seguir ao outro (não interessa por que ordem).
 \end_layout
 
 \begin_layout Standard
@@ -2396,8 +2408,8 @@ nte.
 \begin_layout Standard
 Para efeitos de optimização do trabalho, tentou-se minimizar o numero de
  teclas que é preciso carregar por cada label.
- Nesses sentido, algumas operações, nomeadamente as que movem a label ou
- as suas fronteiras, automaticamente mudam o tipo da label de temporária
+ Nesse sentido, algumas operações, nomeadamente as que movem a label ou
+ as suas fronteiras, mudam automaticamente o tipo da label de temporária
  para final.
  A lógica assumida é que se o operador ajustou a label então é porque já
  a colocou, ou está no processo de a colocar, na sua posição final.
@@ -2405,7 +2417,7 @@ Para efeitos de optimização do trabalho, tentou-se minimizar o numero de
 
 \begin_layout Standard
 Para os casos em que não é necessário nenhum ajuste, pode-se carregar nas
- teclas SIFT + 
+ teclas SHIFT + 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2425,17 +2437,28 @@ t
 \begin_inset Quotes erd
 \end_inset
 
- torna a label como temporária novamente.
+ (sem SHIFT) a label volta a ser temporária.
 \end_layout
 
 \begin_layout Standard
-Existe ainda a tecla ENTER que torna a label final e avança para o frame
- seguinte.
+Existe ainda a tecla ENTER que marca a label como final e avança para a
+ frame seguinte.
  Esta combinação é útil quando se está a rever as labels depois de usar
- os métodos automáticos.
+ os métodos automáticos da subsecção
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:automatismos"
+
+\end_inset
+
+.
  Provavelmente, nesse caso, muitas das labels não precisam de ajuste, bastando
  aceitá-las e passar à label seguinte.
- Para tal só é necessário carregar em ENTER.
+ Para fazer tudo isso apenas é necessário carregar em ENTER.
 \end_layout
 
 \begin_layout Subsection
@@ -2449,19 +2472,16 @@ Automatismos
 \end_layout
 
 \begin_layout Standard
-Uma forma de aliviar a tarefa de labeling, foi criando automatismos que,
- embora não pretendam substituir a anotação manual, pretendem facilitar
+Como uma forma de aliviar a tarefa de labeling, estão disponíveis automatismos
+ que, embora não pretendam substituir a anotação manual, pretendem facilitar
  a mesma.
+ Foram criados quatro métodos automáticos, dos quais dois operam imagem
+ a imagem enquanto que o outros dois automatizam a anotação de um número
+ elevado de imagens num único passo.
 \end_layout
 
 \begin_layout Standard
-Foram criados quatro métodos automáticos, dos quais dois operam imagem a
- imagem enquanto que o outros dois automatizam a anotação de um número elevado
- de imagens num único passo.
-\end_layout
-
-\begin_layout Standard
-Estes métodos são os que se seguem.
+Estes métodos são descritos a seguir.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2481,17 +2501,15 @@ p
 \end_layout
 
 \begin_layout Standard
-Este comando copia a anotação do frame de vídeo anterior.
+Este comando copia a label da frame de vídeo anterior para a frame actual.
  Essa frame anterior precisa de existir e ser final, caso contrário o comando
  não faz nada.
 \end_layout
 
 \begin_layout Standard
-Pressupõe-se que os barcos se deslocam pouco entre imagens consecutivas,
- logo é preferível copiar a anotação da imagem anterior e fazer pequenos
- ajustes (para os quais existem teclas dedicadas) do que criar uma nova
- anotação desde o início para cada imagem.
- 
+Pressupõe-se que os objectos se deslocam pouco entre imagens consecutivas,
+ logo é mais rápido copiar a label da imagem anterior e fazer pequenos ajustes
+ do que criar uma nova label desde o início para cada frame.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2517,12 +2535,12 @@ o
 \end_layout
 
 \begin_layout Standard
-Este comando é idêntico ao anterior, mas depois de fazer a cópia faz uma
- procura da imagem dentro do rectângulo definido pela label do frame anterior.
- Essa procura faz-se no frame actual e numa vizinhança à volta da label
- original.
+Este comando é idêntico ao anterior mas, depois de fazer a cópia, procura
+ na frame actual e numa vizinhança da label copiada a imagem que está dentro
+ da label anterior.
  A procura é feita com base na minimização do erro quadrático médio entre
  as duas imagens.
+ Por fim, a posição da label é ajustada para a posição onde o erro foi menor.
 \end_layout
 
 \begin_layout Standard
@@ -2578,9 +2596,10 @@ name "fig:exemplo-interpolacao"
 
 \end_inset
 
-Exemplo de anotações obtidas automaticamente usando o método da interpolação
- linear entre os frames 0 e 100.
- As anotações extremas (frames 0 e 100, a cor verde) são manuais.
+Exemplo de labels obtidas automaticamente usando o método da interpolação
+ linear entre as frames 0 e 100.
+ As labels extremas (frames 0 e 100, a cor verde) foram definidas manualmente.
+ As restantes (amarelo) foram interpoladas.
 \end_layout
 
 \end_inset
@@ -2594,9 +2613,9 @@ Exemplo de anotações obtidas automaticamente usando o método da interpolaçã
 \end_layout
 
 \begin_layout Standard
-Neste método são marcadas duas anotações em duas imagens não consecutivas,
- sendo depois feita uma interpolação linear para estimar as anotações das
- imagens intermédias.
+Neste método são marcadas duas labels em duas imagens não consecutivas,
+ sendo depois feita uma interpolação linear para estimar as labels das imagens
+ intermédias.
  Ver o exemplo da Figura
 \begin_inset space ~
 \end_inset
@@ -2624,7 +2643,7 @@ marcar e finalizar a label na última frame do intervalo
 \end_layout
 
 \begin_layout Enumerate
-ir para (seek) a última frame do intervalo
+ir para a última frame do intervalo (seek)
 \end_layout
 
 \begin_layout Enumerate
@@ -2656,9 +2675,9 @@ i
 
 \begin_layout Standard
 Este método aplica-se aos casos onde o objecto descreve movimentos lineares.
- Muitos dos movimentos encontrados frequentemente ou são deste tipo linear
- ou podem ser aproximados por troços lineares.
- Este método em conjunto com o seguinte (subsecção
+ Muitos dos movimentos encontrados frequentemente ou são lineares ou podem
+ ser aproximados por troços lineares.
+ Este método, em conjunto com o seguinte (subsecção
 \begin_inset space ~
 \end_inset
 
@@ -2669,8 +2688,9 @@ reference "sub:Procura-numa-sequência"
 
 \end_inset
 
-) permite na maioria dos casos obter aproximações muito boas, minimizando
- o número de ajustes manuais necessários após a sua aplicação.
+), permite na maioria dos casos obter aproximações muito boas ao movimento
+ do objecto, minimizando o número de ajustes manuais necessários após a
+ sua aplicação.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2708,7 +2728,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Ajuste automático
+Procura numa sequência
 \end_layout
 
 \end_inset
@@ -2720,8 +2740,8 @@ name "fig:exemplo-interpolacao-mais-ajuste"
 
 \end_inset
 
-Anotações obtidas depois de ajustadas automaticamente (relativamente à figura
- anterior).
+Labels obtidas depois de aplicado o método de procura numa sequência (comparar
+ com a figura anterior).
 \end_layout
 
 \end_inset
@@ -2763,19 +2783,19 @@ reference "fig:exemplo-interpolacao-mais-ajuste"
 \end_layout
 
 \begin_layout Standard
-Para este método são necessários os seguintes passos:
+Para usar este método são necessários os seguintes passos:
 \end_layout
 
 \begin_layout Enumerate
-marcar como finais as duas labels nos extremos do intervalo de frames
+criar duas labels finais nos extremos da sequência de frames
 \end_layout
 
 \begin_layout Enumerate
-criar as labels temporárias dentro do intervalo
+criar as labels temporárias no interior da sequência
 \end_layout
 
 \begin_layout Enumerate
-ir para (seek) a última frame (frame final do fim do intervalo)
+ir para (seek) a última frame (frame final no fim da sequência)
 \end_layout
 
 \begin_layout Enumerate
@@ -2800,9 +2820,9 @@ u
 \end_inset
 
 , o método anda para trás no vídeo até encontrar uma label do tipo final,
- definindo assim o intervalo de frames onde opera.
- Depois, guarda as imagens dos extremos do intervalo (as que estão dentro
- das labels finais).
+ definindo assim a sequência de frames onde opera.
+ De seguida, guarda as imagens dos extremos do intervalo (as que estão dentro
+ das labels finais nos extremos).
 \end_layout
 
 \begin_layout Standard
@@ -2821,7 +2841,7 @@ reference "sub:Cópia-com-procura"
 \end_inset
 
 , mas agora são obtidos dois erros diferentes, um por cada imagem.
- Os erros são pesados com base na distância entre e frame actual e as frames
+ Os erros são pesados com base na distância entre a frame actual e as frames
  das duas imagens e por fim o erro mais baixo é escolhido.
  A posição encontrada que corresponde à imagem com menos erro é usada como
  sendo a nova label temporária para essa frame.
@@ -2829,12 +2849,13 @@ reference "sub:Cópia-com-procura"
 
 \begin_layout Standard
 O peso com base na distância temporal parte do pressuposto que a imagem
- do objecto será mais semelhante quanto mais perto temporalmente forem os
- dois frames comparados.
- Usando as duas imagens dos extremos do intervalo e usando este peso, permite
- ao método funcionar em intervalos de tempo mais alargados mesmo que a imagem
- do objecto varie nesse intervalo (por exemplo: o objecto pode rodar, mudar
- de tamanho devido à perspectiva, etc.).
+ do objecto será mais semelhante quanto mais perto temporalmente for de
+ cada uma das duas frames comparadas.
+ Usando as duas imagens dos extremos do intervalo em conjunto com este peso,
+ permite ao método funcionar em intervalos de tempo mais alargados mesmo
+ que a imagem do objecto varie nesses intervalos (por exemplo: o objecto
+ pode rodar, mudar de tamanho devido à perspectiva, a iluminação pode variar,
+ etc.).
 \end_layout
 
 \begin_layout Standard
@@ -2858,8 +2879,8 @@ reference "sub:Interpolação-linear"
 \end_layout
 
 \begin_layout Standard
-Este método foi aplicado com bastante sucesso em sequências com até 500
- frames.
+Este método foi aplicado duma única vez com bastante sucesso em sequências
+ com até 500 frames.
 \end_layout
 
 \begin_layout Subsection
@@ -2867,13 +2888,41 @@ Verificação e confirmação da labels
 \end_layout
 
 \begin_layout Standard
-Note-se ainda que estes métodos não dispensam por parte do operador a verificaçã
-o manual (imagem a imagem) das anotações estimadas automaticamente.
+Note-se que os métodos automáticos não dispensam, por parte do operador,
+ da verificação manual (imagem a imagem) das anotações estimadas automaticamente.
  Aliás, a ferramenta marca-as como anotações temporárias, forçando o operador
- a torná-las finais manualmente.
+ a passar por todas elas, verificando-as, ajustando-as e marcando-as como
+ finais manualmente.
  No entanto, os métodos disponíveis na ferramenta estimam correctamente
- um grande número das anotações, restando ao operador fazer pequenas correcções
- ocasionais e confirmar as anotações correctas.
+ um grande número labels, restando ao operador fazer pequenas correcções
+ ocasionais e confirmar as anotações já estavam correctas.
+ Ver como nas subsecções
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:modificar-labels"
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+e
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:finalizar-as-labels"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
