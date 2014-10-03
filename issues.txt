@@ -6,5 +6,5 @@ Legend:
 2014-10-12
   - ok - 0001 - When using the "o" command and the previous label is near the screen edges the programs aborts (core dump).
   -    - 0002 - When video is too smal the help screen ir cropped.
-  -    - 0003 - Scalling is wrong when zooming 4x and the label is almost touching either right or bottom edges of the screen. Depends on label size. Other edges are OK.
+  - ok - 0003 - Scalling is wrong when zooming 4x and the label is almost touching either right or bottom edges of the screen. Depends on label size. Other edges are OK.
   -    - 0004 - Remove debug output.

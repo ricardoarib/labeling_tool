@@ -901,8 +901,8 @@ int main( int argc, char*argv[] ) {
 
       if ( x_start < 0 ) { x_start = 0 ; x_end = img2.cols/factor ; }
       if ( y_start < 0 ) { y_start = 0 ; y_end = img2.rows/factor ; }
-      if ( x_end > img2.cols ) { x_start = img2.cols/factor ; x_end = img2.cols ; }
-      if ( y_end > img2.rows ) { y_start = img2.rows/factor ; y_end = img2.rows ; }
+      if ( x_end > img2.cols ) { x_start = img.cols - img2.cols/factor ; x_end = img2.cols ; }
+      if ( y_end > img2.rows ) { y_start = img.rows - img2.rows/factor ; y_end = img2.rows ; }
 
       //cout << x_start <<", "<< x_end <<", "<< y_start <<", "<< y_end << endl;
 
