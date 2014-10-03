@@ -576,6 +576,21 @@ void do_search_prediction( cv::Mat img, detections & det, int current_frame, int
     int yy2 = d.pts.y2 + search_range ;
     cout << " " << xx1 << " " << xx2 << " " << yy1 << " " << yy2 << endl;
 
+    if (xx1<0) xx1 = 0 ;
+    if (yy1<0) yy1 = 0 ;
+    if (xx2>=img.cols) xx2 = img.cols - 1 ;
+    if (yy2>=img.rows) yy2 = img.rows - 1 ;
+
+    cout << " " << xx1 << " " << xx2 << " " << yy1 << " " << yy2 << endl;
+
+    int x_delta1 = d.pts.x1 - xx1 ;
+    //int x_delta2 = xx2 - d.pts.x2 ;
+    int y_delta1 = d.pts.y1 - yy1 ;
+    //int y_delta2 = yy2 - d.pts.y2 ;
+
+    cout << "deltas" << endl;
+    //cout << " " << x_delta1 << " " << x_delta2 << " " << y_delta1 << " " << y_delta2 << endl;
+    cout << " " << x_delta1 << " " << " " << y_delta1 << endl;
 
 
     double saved_frame_number = cap.get( CV_CAP_PROP_POS_FRAMES );
@@ -585,8 +600,8 @@ void do_search_prediction( cv::Mat img, detections & det, int current_frame, int
       cout<<"Already at last frame!"<<endl ;
     cap.set( CV_CAP_PROP_POS_FRAMES, saved_frame_number );
 
-
-    cv::Mat image = img2( cv::Range(d.pts.y1-search_range,d.pts.y2+search_range), cv::Range(d.pts.x1-search_range,d.pts.x2+search_range) ) ;
+    //cv::Mat image = img2( cv::Range(d.pts.y1-search_range,d.pts.y2+search_range), cv::Range(d.pts.x1-search_range,d.pts.x2+search_range) ) ;
+    cv::Mat image = img2( cv::Range(yy1,yy2), cv::Range(xx1,xx2) ) ;
 
     cv::Mat result( 2*search_range+1, 2*search_range+1,CV_32FC1 );
 
@@ -598,20 +613,36 @@ void do_search_prediction( cv::Mat img, detections & det, int current_frame, int
     cv::Point maxLoc, minLoc;
     cv::minMaxLoc(result, NULL, NULL, &minLoc, &maxLoc) ;
     cout << minLoc << " " << maxLoc <<endl ;
-    minLoc.x -= search_range ;
-    minLoc.y -= search_range ;
-    maxLoc.x -= search_range ; 
-    maxLoc.y -= search_range ;
+    //minLoc.x -= search_range ;
+    //minLoc.y -= search_range ;
+    //maxLoc.x -= search_range ; 
+    //maxLoc.y -= search_range ;
+    minLoc.x -= x_delta1 ;
+    minLoc.y -= y_delta1 ;
+    maxLoc.x -= x_delta1 ; 
+    maxLoc.y -= y_delta1 ;
     cout << minLoc << " " << maxLoc <<endl ;
 
     int dx = - minLoc.x;
     int dy = - minLoc.y;
+    cout << "dx,dy = " << dx << "," << dy << endl;
 
     points pts;
     pts.x1 = dx + d.pts.x1 ;
     pts.x2 = dx + d.pts.x2 ;
     pts.y1 = dy + d.pts.y1 ;
     pts.y2 = dy + d.pts.y2 ;
+
+    std::cout << "points" << std::endl;
+    cout << " " << pts.x1 << " " << pts.x2 << " " << pts.y1 << " " << pts.y2 << endl;
+
+    if (pts.x1<0) pts.x1 = 0 ;
+    if (pts.y1<0) pts.y1 = 0 ;
+    if (pts.x2>=img.cols) pts.x2 = img.cols - 1 ;
+    if (pts.y2>=img.rows) pts.y2 = img.rows - 1 ;
+
+    std::cout << "setting new label" << std::endl;
+    cout << " " << pts.x1 << " " << pts.x2 << " " << pts.y1 << " " << pts.y2 << endl;
     det.set_detection( current_frame, current_id, pts, true ) ;
   }
 }
@@ -1136,8 +1167,9 @@ int main( int argc, char*argv[] ) {
 
     time_t now = time(0) ;
     if ( difftime(now,autosave_time_of_last) > 30 ) {
-      cout << "autosave" << endl;
+      cout << "Autosaving to file " << autosave_filename << " ......... " << endl ;
       det.write_to_file( autosave_filename ) ;
+      cout << "Autosaving done." << endl ;
       autosave_time_of_last = now;
     }
     

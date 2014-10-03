@@ -1,0 +1,3 @@
+2012-10-03
+  - Fixed the following issue: 0001 - When using the "o" command and the previous label is near the screen edges the programs aborts (core dump).
+
