@@ -8,3 +8,7 @@ Legend:
   -    - 0002 - When video is too smal the help screen ir cropped.
   - ok - 0003 - Scalling is wrong when zooming 4x and the label is almost touching either right or bottom edges of the screen. Depends on label size. Other edges are OK.
   -    - 0004 - Remove debug output.
+
+2014-10-17
+  -    - 0005 - Cmake fails when compiling with a new install of Ubuntu 12.4 with ros-hydro: Cmake cannot find FindOpenCV.cmake file.
+                Installing package libopencv-core-devel provides /usr/share/OpenCV/OpenCVConfig-version.cmake and /usr/share/OpenCV/OpenCVConfig.cmake files. In this case cmake does not fail but subsequent make fails.
