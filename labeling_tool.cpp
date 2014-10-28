@@ -679,7 +679,7 @@ void do_prediction( cv::Mat img, detections &det, int current_frame, int current
 
 
 void version(){
-  std::cout << "version 0.1" << endl ;
+  std::cout << "version 0.1.1" << endl ;
 }
 
 void help_cmdl(char** argv){
