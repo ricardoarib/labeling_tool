@@ -420,7 +420,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/help/Screenshot from 2014-09-30 19:57:30.png
+	filename images/help/Screenshot from 2014-10-28 16:52:26.png
 	width 90text%
 
 \end_inset
@@ -2893,6 +2893,66 @@ reference "sub:finalizar-as-labels"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsection
+Visual Help
+\end_layout
+
+\begin_layout Subsubsection
+Dynamic range maximization
+\end_layout
+
+\begin_layout Standard
+By pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ key the dynamic range on the luminance of the current image show on screen
+ is maximized.
+ This option determines the maximum and minimum values of the image's luminance
+ and scales it so that all available dynamic range of the screen is used.
+\end_layout
+
+\begin_layout Standard
+This functionality is useful when the images have very low contrast and
+ the object is not easy to be seen.
+\end_layout
+
+\begin_layout Standard
+This luminance scaling is only visual and does not affect the automatic
+ methods of section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:automatismos"
+
+\end_inset
+
+, which continue to use the original (non scaled) luminance.
+\end_layout
+
+\begin_layout Standard
+Pressing again the 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ key disables this feature.
 \end_layout
 
 \end_body

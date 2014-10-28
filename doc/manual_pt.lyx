@@ -426,7 +426,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/help/Screenshot from 2014-09-30 19:57:30.png
+	filename images/help/Screenshot from 2014-10-28 16:52:26.png
 	width 90text%
 
 \end_inset
@@ -2923,6 +2923,63 @@ reference "sub:finalizar-as-labels"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Ajudas visuais
+\end_layout
+
+\begin_layout Subsubsection
+Maximização da gama dinâmica
+\end_layout
+
+\begin_layout Standard
+Ao carregar na tecla 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ é maximizada a gama dinâmica da luminância da imagem que está a ser mostrada
+ no ecrã.
+ Esta opção determina o valores máximo e mínimo da luminância da imagem
+ actual e escala-a de forma a utilizar a toda a gama dinâmica disponível
+ no ecrã.
+\end_layout
+
+\begin_layout Standard
+Esta funcionalidade é útil quando as imagens têm pouco contraste e o objecto
+ não é facilmente distinguível.
+\end_layout
+
+\begin_layout Standard
+Este escalamento da luminância é apenas visual e não afecta nenhum dos métodos
+ automáticos da secção
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:automatismos"
+
+\end_inset
+
+, os quais continuam a fazer uso da luminância original não escalada.
+\end_layout
+
+\begin_layout Standard
+Carregando novamente na tecla 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ desactiva esta funcionalidade.
 \end_layout
 
 \end_body

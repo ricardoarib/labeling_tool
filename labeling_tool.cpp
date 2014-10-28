@@ -308,6 +308,7 @@ void print_online_help ( cv::Mat img2 ) {
   putText( img2, string("h - show/hide this help") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("v - show/hide frame number and current id info") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("x - show/hide box id's") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
+  putText( img2, string("1 - maximizes dynamic range of the image shown.") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("ESC - quits the program and saves detections to file") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   y+=nlskip ; 
   putText( img2, string("moving box borders (normal - move by 1 pixel; with shift - move by 10 pixels):") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
@@ -338,7 +339,6 @@ void print_online_help ( cv::Mat img2 ) {
   y+=nlskip ; 
   putText( img2, string("7/8/9 - resize window to half/full/double size") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("0 - enter/exit full screem mode") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
-  putText( img2, string("") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
   putText( img2, string("Note: Final boxes of current id are green and temporary boxes are yellow. Boxes with other id's are grey.") , cvPoint(x,y),font, font_size, color ) ; y+=nlskip ; 
 }
 
@@ -683,9 +683,13 @@ void version(){
 }
 
 void help_cmdl(char** argv){
+
+
   std::cout<< "Usage:" << std::endl;
   std::cout<< argv[0]<<" [options] <video_file>"<<std::endl;
   version();
+  std::cout << "(using OpenCV version " << CV_MAJOR_VERSION << "." << CV_MINOR_VERSION << ")" <<std::endl;
+
   std::cout<< "options:        " << std::endl;
   std::cout<< "    -d <detections_file>   - defines the file where to read and to save the detections." << std::endl;
   std::cout<< "                             If unspecified, the software uses the video filename with" << std::endl;
@@ -836,6 +840,8 @@ int main( int argc, char*argv[] ) {
   int total_frames =  cap.get(CV_CAP_PROP_FRAME_COUNT) ;
   int current_frame = 0 ;
 
+  bool max_dynamic_range = false ;
+
   while(1){
     //update_det = false ;
 
@@ -846,6 +852,27 @@ int main( int argc, char*argv[] ) {
 
     //src = cvRetrieveFrame( capture );
     img2=img.clone();
+
+    if (max_dynamic_range){
+      static double alpha = 1.0;
+      static double beta = 0.0;
+
+      cv::Mat img_gray;
+      cv::cvtColor(img2, img_gray, CV_BGR2GRAY);
+      double min, max ;
+      minMaxLoc( img_gray, &min, &max );
+      float new_alpha = 256.0/(max-min) ;
+      float new_beta = - min * new_alpha ;
+
+      // time filter the gain parameters ( N=0 disables time filtering )
+      int N = 0; //10;
+      alpha = (new_alpha + N*alpha)/(N+1)  ;
+      beta = (new_beta + N*beta)/(N+1) ;
+      //std::cout << "alfa , beta = " << alpha << " , " << beta << std::endl ;
+      
+      img2.convertTo(img2,-1,alpha,beta);
+
+    }
 
     detection d ;
     cv::Scalar color ;
@@ -995,6 +1022,8 @@ int main( int argc, char*argv[] ) {
       case 'z': zoom++; if (zoom>2) zoom = 0; break;
 
       case ' ': play = !play; break;
+
+      case '1': max_dynamic_range = !max_dynamic_range; break;
 
       case '5': if (current_id > 0 ) { current_id-- ; }; break ;
       case '6': if (current_id < num_ids - 1 ) { current_id++ ; }; break ;

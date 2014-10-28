@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.48.3.1 r9886"
    version="1.0"
-   sodipodi:docname="help.svg"
+   sodipodi:docname="keyboard_map.svg"
    inkscape:export-filename="/home/rari/work/posdoc_isr_sea/isr/work/tools/labeling_tool/images/help.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -472,10 +472,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.71"
-     inkscape:cx="503.64345"
+     inkscape:cx="337.44627"
      inkscape:cy="323.14393"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer5"
      inkscape:grid-points="true"
      showgrid="true"
      gridtolerance="15px"
@@ -525,8 +525,8 @@
      id="layer4"
      inkscape:label="aux"
      style="display:none"
-     sodipodi:insensitive="true"
-     transform="translate(0.5,90.5)">
+     transform="translate(0.5,90.5)"
+     sodipodi:insensitive="true">
     <path
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Swis721 BT"
        d="m 53.585973,-406.59375 -0.914063,-7.76953 0,-4.6875 3.609375,0 0,4.6875 -0.914062,7.76953 -1.78125,0 m -0.867188,4.80469 0,-3.45703 3.480469,0 0,3.45703 -3.480469,0 m 0.867188,30 0,-11.47266 -4.007813,0 0,-2.35547 0.257813,0 c 1.460933,2e-5 2.523432,-0.22655 3.1875,-0.67968 0.671868,-0.45311 1.066399,-1.21093 1.183593,-2.27344 l 2.683594,0 0,16.78125 -3.304687,0"
@@ -1035,7 +1035,8 @@
      id="layer2"
      inkscape:label="Keys"
      style="display:inline"
-     transform="translate(0.5,90.5)">
+     transform="translate(0.5,90.5)"
+     sodipodi:insensitive="true">
     <path
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0;display:inline"
        d="m 330,60 60,0 0,60 -60,0 0,-60 z"
@@ -1360,8 +1361,8 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline"
-     sodipodi:insensitive="true"
-     transform="translate(0.5,90.5)">
+     transform="translate(0.5,90.5)"
+     sodipodi:insensitive="true">
     <path
        d=""
        id="flowRoot4146"
@@ -1846,13 +1847,25 @@
          x="681.09094"
          y="227.86365"
          id="tspan4894">-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans;-inkscape-font-specification:Sans"
+       x="63.090912"
+       y="19.263672"
+       id="text3359-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3361-1"
+         x="63.090912"
+         y="19.263672">1</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="help"
      style="display:inline"
-     transform="translate(0.5,90.5)">
+     transform="translate(0.5,90.5)"
+     sodipodi:insensitive="true">
     <rect
        style="fill:#ffffff;stroke:#ff6600;stroke-width:2.08339047;stroke-miterlimit:4;stroke-dasharray:none;display:inline"
        id="rect6973-7"
@@ -2457,14 +2470,33 @@
        id="path5045-3"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="115.5"
+       y="17.000004"
+       id="text5658-0-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="115.5"
+         y="17.000004"
+         id="tspan5662-71-4">Max</tspan><tspan
+         sodipodi:role="line"
+         x="115.5"
+         y="34.500004"
+         id="tspan3482">Dyn.</tspan><tspan
+         sodipodi:role="line"
+         x="115.5"
+         y="52.000004"
+         id="tspan3484">Range</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="help frames"
      style="display:inline"
-     sodipodi:insensitive="true"
-     transform="translate(0.5,90.5)">
+     transform="translate(0.5,90.5)"
+     sodipodi:insensitive="true">
     <path
        style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 180,0 60,0 0,60 30,0 0,60 -60,0 0,-60 -30,0 z"
