@@ -23,7 +23,7 @@ Legend:
 
 
 2014-11-12
-  -    - 0008 - Some filenames contain commas (:) and are no compatible with windows OS.
+  - ok - 0008 - Some filenames contain commas (:) and are no compatible with windows OS.
 
 2014-11-21
   -    - 0009 - Feature Request: a new automatic method, similar to the 'u' key command, that adjust temporary lanels based on the contents of only one precedind final label.
