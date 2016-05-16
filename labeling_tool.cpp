@@ -679,7 +679,7 @@ void do_prediction( cv::Mat img, detections &det, int current_frame, int current
 
 
 void version(){
-  std::cout << "version 0.1.1" << endl ;
+  std::cout << "version 0.1.2" << endl ;
 }
 
 void help_cmdl(char** argv){
@@ -808,6 +808,10 @@ int main( int argc, char*argv[] ) {
 
 
   double fps = cap.get( CV_CAP_PROP_FPS ) ;
+  if ( !isnormal(fps) ) {
+    fps = 25;
+    cout << "WARNING: could not get the video frame rate. Using 25 fps instead." << endl;
+  };
   int delay = 1.0/fps * 1000.0; // in miliseconds
   if ( delay == 0 ) delay = 10 ;
 
@@ -895,7 +899,6 @@ int main( int argc, char*argv[] ) {
 	color = cv::Scalar(0,255,0) ;
 
       rectangle( img2, cv::Rect(cvPoint(d.pts.x1,d.pts.y1),cvPoint(d.pts.x2+1,d.pts.y2+1)), color );
-      
       // highlight
       if ( hl.top )    line( img2, cvPoint(d.pts.x1,d.pts.y1), cvPoint(d.pts.x2,d.pts.y1), cv::Scalar(0,0,255) ) ;
       if ( hl.bottom ) line( img2, cvPoint(d.pts.x1,d.pts.y2), cvPoint(d.pts.x2,d.pts.y2), cv::Scalar(0,0,255) ) ;
