@@ -31,3 +31,5 @@ Legend:
 2016-05-16
   - ok - 0010 - Play (space bar) does not work and the mouse also does not work. [Could not get the fps value from the video file and the main loop delay became a NAN.]
 
+2018-04-12
+  -    - 0011 - Sometimes users exchange the left/top with the right botton box margins. The tool should detect these cases to avoid saving negative widths/heights.
