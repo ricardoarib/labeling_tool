@@ -39,6 +39,14 @@
 #include <cstdio> // for remove("filename")
 #include <getopt.h>
 
+#if (defined(CV_VERSION_EPOCH) && CV_VERSION_EPOCH == 2)
+// OpenCV 2.4.x stuff
+#else
+// OpenCV 3.0 stuff
+  #include "opencv2/opencv.hpp"
+#endif
+
+
 using namespace std;
 
 
@@ -242,6 +250,16 @@ void set_highlited(int x, int y, points pts, highlight& hl){
 }
 
 
+
+#if (defined(CV_VERSION_EPOCH) && CV_VERSION_EPOCH == 2)
+// OpenCV 2.4.x stuff
+  #define LBUTDOWN  cv::EVENT_LBUTTONDOWN
+  #define LBUTUP    cv::EVENT_LBUTTONUP
+#else
+// OpenCV 3.0 stuff
+  #define LBUTDOWN  CV_EVENT_LBUTTONDOWN
+  #define LBUTUP    CV_EVENT_LBUTTONUP
+#endif
 void onMouse( int event, int x, int y, int flags, void* data ) {
 
   private_data* pd = (private_data*) data;  
@@ -263,7 +281,7 @@ void onMouse( int event, int x, int y, int flags, void* data ) {
   static int dx1,dy1,dx2,dy2 ;
 
   switch ( event ) {
-  case cv::EVENT_LBUTTONDOWN :
+  case LBUTDOWN :
     cout << "but down" << endl;
     bt_pressed = true ;
     dx1 = x - pts->x1 ;
@@ -271,7 +289,7 @@ void onMouse( int event, int x, int y, int flags, void* data ) {
     dy1 = y - pts->y1 ;
     dy2 = y - pts->y2 ;
     break;
-  case cv::EVENT_LBUTTONUP :
+  case LBUTUP :
     cout << "but up" << endl;
     bt_pressed = false ;
     break;
@@ -679,7 +697,7 @@ void do_prediction( cv::Mat img, detections &det, int current_frame, int current
 
 
 void version(){
-  std::cout << "version 0.1.2" << endl ;
+  std::cout << "version 0.1.3" << endl ;
 }
 
 void help_cmdl(char** argv){

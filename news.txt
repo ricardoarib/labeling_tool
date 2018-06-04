@@ -7,3 +7,5 @@
   - Fixed issue: 0008 - Some filenames contain commas (:) and are no compatible with windows OS.
 2016-05-16
   - Fixed issue: 0010 - Play (space bar) does not work and the mouse also does not work.
+2018-06-04
+  - Fixed issue: 0012 - Does not compile on macos using opencv 3.4. After this fix, it should also compile with previous opencv versions and on linux.

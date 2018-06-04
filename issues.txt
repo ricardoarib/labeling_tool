@@ -33,3 +33,7 @@ Legend:
 
 2018-04-12
   -    - 0011 - Sometimes users exchange the left/top with the right botton box margins. The tool should detect these cases to avoid saving negative widths/heights.
+
+2018-06-04
+  - ok - 0012 - Does not compile on macos using opencv 3.4.
+
